@@ -3,7 +3,7 @@ grid.classList.add('#grid');
 
 //16x16 row and column
 let gridSize = 16;
-let addSquares = function (){
+function addSquares(){
     for (let i = 0; i <= gridSize; i++){
         const row = document.createElement('div');
         row.classList.add('row')
@@ -16,18 +16,21 @@ let addSquares = function (){
     }
 }
 
-addSquares(gridSize);
+addSquares();
 
 //Change color when hover
-const squares = document.querySelectorAll('.column');
-squares.forEach((square) => {
+function changeColor(){
+    const squares = document.querySelectorAll('.column');
+    squares.forEach((square) => {
     square.addEventListener("mouseover", () => {
         square.classList.add("colorChange");
       }); 
-})
+    })
+}
 
+changeColor();
 
-//resize column and row when gridSize change
+//Resize column and row when gridSize change
 function resizeColumnsAndRows(){
     const containerWidth = 960;
     const columnWidth = containerWidth / gridSize;
@@ -48,8 +51,7 @@ function resizeColumnsAndRows(){
 resizeColumnsAndRows();
 
 
-//prompt user to change gridSize using button
-
+//Prompt user to change gridSize using button
 const button = document.querySelector('button');
 button.addEventListener('click', getUserInput);
 
@@ -57,9 +59,11 @@ function getUserInput(gridSize){
     let userInput = +prompt("Grid Size (Up to 100): ");
     if (userInput !== null) {
         if (userInput <= 100) {
+            grid.innerHTML = '';
             gridSize = userInput;
             addSquares(gridSize);
-            resizeColumnsAndRows();
+            resizeColumnsAndRows(gridSize);
+            changeColor();
         }
         else {
             alert("Please enter a value up to 100.")
