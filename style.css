@@ -1,0 +1,27 @@
+body {
+    font-family: Roboto, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: bisque;
+}
+
+
+.row {
+    display: flex;
+    justify-content: center;
+}
+
+.column {
+    width: 30px;
+    height: 30px;
+    border: 1px solid grey;
+    background-color: white;
+    cursor: pointer;
+    transition: background-color 0.1s ease;
+}
+
+.column:hover {
+    background-color: black;
+}
+ 
