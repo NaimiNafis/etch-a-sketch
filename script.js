@@ -29,3 +29,20 @@ squares.forEach((square) => {
       }); 
 })
 
+//resize column and row when gridSize change
+
+const containerWidth = 960;
+const columnWidth = containerWidth / gridSize;
+const rowHeight = containerWidth / gridSize;
+
+const columns = document.querySelectorAll('.column');
+const rows = document.querySelectorAll('.row');
+
+columns.forEach((column) => {
+    column.style.width = `${columnWidth}px`;
+})
+
+rows.forEach((row) => {
+    row.style.height = `${rowHeight}px`;
+})
+
