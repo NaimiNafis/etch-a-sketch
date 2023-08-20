@@ -1,14 +1,11 @@
-const grid = document.querySelector('#grid');
-grid.classList.add('#grid');
-
 //16x16 row and column
 let gridSize = 16;
 function addSquares(){
-    for (let i = 0; i <= gridSize; i++){
+    for (let i = 0; i < gridSize; i++){
         const row = document.createElement('div');
         row.classList.add('row')
         grid.appendChild(row);
-        for (let j = 0; j <= gridSize; j++){
+        for (let j = 0; j < gridSize; j++){
             const column = document.createElement('div');
             column.classList.add('column')
             row.appendChild(column);
@@ -55,7 +52,7 @@ resizeColumnsAndRows();
 const button = document.querySelector('button');
 button.addEventListener('click', getUserInput);
 
-function getUserInput(gridSize){
+function getUserInput(){
     let userInput = +prompt("Grid Size (Up to 100): ");
     if (userInput !== null) {
         if (userInput <= 100) {
