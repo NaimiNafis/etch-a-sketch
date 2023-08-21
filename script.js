@@ -73,4 +73,8 @@ function getUserInput(){
 
 /*
 
+1. Random color generator
+2. shade or darkening effect, each time click or passed 10% darker,
+after 10 iterations, pitch black.
+
 */
