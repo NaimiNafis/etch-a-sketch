@@ -15,7 +15,23 @@ function addSquares(){
 
 addSquares();
 
+//Clear grid 
+const gridClear = document.querySelector('#clearBtn');
+gridClear.addEventListener('click', clearGrid);
+
+function clearGrid(){
+    const squares = document.querySelectorAll('.column');
+    squares.forEach((square) => {
+        square.style.backgroundColor = 'white';
+    }); 
+}
+
 //Change color when hover
+const randomColorButton = document.querySelector('#randomBtn');
+const blackColorButton = document.querySelector('#blackBtn');
+
+randomColorButton.addEventListener('click', changeRandomColor);
+blackColorButton.addEventListener('click', changeBlackColor);
 
 function getRandomColor() {
     let r = Math.floor(Math.random() * 256);
@@ -24,33 +40,24 @@ function getRandomColor() {
     return `rgb(${r}, ${g}, ${b})`;
 }
 
-const randomColor = document.querySelector('#randomColor');
-randomColor.addEventListener('click', changeRandomColor);
-
 function changeRandomColor() {
     const squares = document.querySelectorAll('.column');
     squares.forEach((square) => {
-      square.addEventListener("mouseover", () => {
-        square.style.backgroundColor = getRandomColor();
-      });
+        square.addEventListener("mouseover", () => {
+            square.style.backgroundColor = getRandomColor();
+        });
     });
 }
-  
-changeRandomColor();
-
-const blackColor = document.querySelector('#blackColor');
-blackColor.addEventListener('click', changeBlackColor);
 
 function changeBlackColor() {
     const squares = document.querySelectorAll('.column');
     squares.forEach((square) => {
-      square.addEventListener("mouseover", () => {
-        square.style.backgroundColor = 'black';
-      });
+        square.addEventListener("mouseover", () => {
+            square.style.backgroundColor = 'black';
+        });
     });
 }
 
-changeBlackColor();
 
 
 //Resize column and row when gridSize change
@@ -75,7 +82,7 @@ resizeColumnsAndRows();
 
 
 //Prompt user to change gridSize using button
-const sizeChange = document.querySelector('#sizeChange');
+const sizeChange = document.querySelector('#sizeBtn');
 sizeChange.addEventListener('click', getUserInput);
 
 function getUserInput(){
@@ -86,7 +93,7 @@ function getUserInput(){
             gridSize = userInput;
             addSquares(gridSize);
             resizeColumnsAndRows(gridSize);
-            changeColor();
+            changeBlackColor();
         }
         else {
             alert("Please enter a value up to 100.")
@@ -112,7 +119,13 @@ else if rainbow button clicked then
     mouse hover will turn squares to rainbow
     so call back the random function
 
+when button black or random is clicked,
+grid.innerHTML = '';
+if black button then
+    return black
 
+if random button then
+    return random
 
 2. shade or darkening effect, each time click or passed 10% darker,
 after 10 iterations, pitch black.
