@@ -52,6 +52,6 @@ body {
     background-color: black;
 }
 
-.colorChange{
-    background-color: black;
+.darkened {
+    opacity: 0.5;
 }

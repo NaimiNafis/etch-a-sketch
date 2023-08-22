@@ -58,6 +58,24 @@ function changeBlackColor() {
     });
 }
 
+//Shade effect on colored column
+
+const darkShade = document.querySelector('#darkShadeBtn');
+darkShade.addEventListener('click', darkenColumn);
+
+function darkenColumn() {
+    randomColorButton.removeEventListener('click', changeRandomColor);
+    const coloredColumns = document.querySelectorAll('.column');
+    coloredColumns.forEach((coloredColumn) => {
+        coloredColumn.addEventListener('click', () => {
+            if (coloredColumn.style.color === 'white') {
+                coloredColumn.style.color = '';
+            } else {
+            coloredColumn.classList.add('darkened');
+        }
+        });
+    });
+}
 
 
 //Resize column and row when gridSize change
@@ -129,5 +147,11 @@ if random button then
 
 2. shade or darkening effect, each time click or passed 10% darker,
 after 10 iterations, pitch black.
+
+If mouseover column then
+    if column is white then
+    return;
+    else
+    the touched column will shade 10%
 
 */
