@@ -16,23 +16,41 @@ function addSquares(){
 addSquares();
 
 //Change color when hover
-function changeColor(){
-    const squares = document.querySelectorAll('.column');
-    squares.forEach((square) => {
-    square.addEventListener("mouseover", () => {
-        square.classList.add("colorChange");
-      }); 
-    })
-}
 
-changeColor();
-
-function getRandomColor(){
+function getRandomColor() {
     let r = Math.floor(Math.random() * 256);
     let g = Math.floor(Math.random() * 256);
     let b = Math.floor(Math.random() * 256);
-    return `rgb(${r}, ${g} ,${b})`;
+    return `rgb(${r}, ${g}, ${b})`;
 }
+
+const randomColor = document.querySelector('#randomColor');
+randomColor.addEventListener('click', changeRandomColor);
+
+function changeRandomColor() {
+    const squares = document.querySelectorAll('.column');
+    squares.forEach((square) => {
+      square.addEventListener("mouseover", () => {
+        square.style.backgroundColor = getRandomColor();
+      });
+    });
+}
+  
+changeRandomColor();
+
+const blackColor = document.querySelector('#blackColor');
+blackColor.addEventListener('click', changeBlackColor);
+
+function changeBlackColor() {
+    const squares = document.querySelectorAll('.column');
+    squares.forEach((square) => {
+      square.addEventListener("mouseover", () => {
+        square.style.backgroundColor = 'black';
+      });
+    });
+}
+
+changeBlackColor();
 
 
 //Resize column and row when gridSize change
@@ -57,8 +75,8 @@ resizeColumnsAndRows();
 
 
 //Prompt user to change gridSize using button
-const button = document.querySelector('button');
-button.addEventListener('click', getUserInput);
+const sizeChange = document.querySelector('#sizeChange');
+sizeChange.addEventListener('click', getUserInput);
 
 function getUserInput(){
     let userInput = +prompt("Grid Size (Up to 100): ");
