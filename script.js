@@ -27,6 +27,14 @@ function changeColor(){
 
 changeColor();
 
+function getRandomColor(){
+    let r = Math.floor(Math.random() * 256);
+    let g = Math.floor(Math.random() * 256);
+    let b = Math.floor(Math.random() * 256);
+    return `rgb(${r}, ${g} ,${b})`;
+}
+
+
 //Resize column and row when gridSize change
 function resizeColumnsAndRows(){
     const containerWidth = 960;
@@ -74,6 +82,20 @@ function getUserInput(){
 /*
 
 1. Random color generator
+
+make 2 buttons, black button and rainbow button;
+
+
+for change color on hover function
+if black button clicked then
+    mouse hover will turn squares to black
+
+else if rainbow button clicked then
+    mouse hover will turn squares to rainbow
+    so call back the random function
+
+
+
 2. shade or darkening effect, each time click or passed 10% darker,
 after 10 iterations, pitch black.
 
