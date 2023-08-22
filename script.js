@@ -1,4 +1,4 @@
-//16x16 row and column
+//Default 16x16 row and column
 let gridSize = 16;
 function addSquares(){
     for (let i = 0; i < gridSize; i++){
@@ -16,7 +16,7 @@ function addSquares(){
 addSquares();
 
 //Clear grid 
-const gridClear = document.querySelector('#clearBtn');
+const gridClear = document.getElementById('clearBtn');
 gridClear.addEventListener('click', clearGrid);
 
 function clearGrid(){
@@ -27,11 +27,12 @@ function clearGrid(){
 }
 
 //Change color when hover
-const randomColorButton = document.querySelector('#randomBtn');
-const blackColorButton = document.querySelector('#blackBtn');
+const randomColorButton = document.getElementById('randomBtn');
+const blackColorButton = document.getElementById('blackBtn');
 
 randomColorButton.addEventListener('click', changeRandomColor);
 blackColorButton.addEventListener('click', changeBlackColor);
+let isDragging = false;
 
 function getRandomColor() {
     let r = Math.floor(Math.random() * 256);
@@ -43,38 +44,61 @@ function getRandomColor() {
 function changeRandomColor() {
     const squares = document.querySelectorAll('.column');
     squares.forEach((square) => {
-        square.addEventListener("mouseover", () => {
+        square.addEventListener('mousedown', () => {
+            isDragging = true;
             square.style.backgroundColor = getRandomColor();
-        });
+        })
+        square.addEventListener('mouseenter', () => {
+            if (isDragging === true){
+                square.style.backgroundColor = getRandomColor();
+            }
+        })
+        square.addEventListener('mouseup', () => {
+            isDragging = false;
+        })
     });
 }
 
 function changeBlackColor() {
     const squares = document.querySelectorAll('.column');
     squares.forEach((square) => {
-        square.addEventListener("mouseover", () => {
+        square.addEventListener('mousedown', () => {
+            isDragging = true;
             square.style.backgroundColor = 'black';
-        });
+        })
+        square.addEventListener('mouseenter', () => {
+            if (isDragging === true){
+                square.style.backgroundColor = 'black';
+            }
+        })
+        square.addEventListener('mouseup', () => {
+            isDragging = false;
+        })
     });
 }
 
 //Shade effect on colored column
+/*
+Problem: 
+1.mouseover getRandomColor did not stop when shade button clicked
 
-const darkShade = document.querySelector('#darkShadeBtn');
+capture current color value
+create new color value + darken it 10%
+
+If mouseover column then
+    if column is white then
+    return;
+    else
+    the touched column will shade 10%
+
+
+ */
+
+const darkShade = document.getElementById('darkShadeBtn');
 darkShade.addEventListener('click', darkenColumn);
 
 function darkenColumn() {
-    randomColorButton.removeEventListener('click', changeRandomColor);
-    const coloredColumns = document.querySelectorAll('.column');
-    coloredColumns.forEach((coloredColumn) => {
-        coloredColumn.addEventListener('click', () => {
-            if (coloredColumn.style.color === 'white') {
-                coloredColumn.style.color = '';
-            } else {
-            coloredColumn.classList.add('darkened');
-        }
-        });
-    });
+
 }
 
 
@@ -100,7 +124,7 @@ resizeColumnsAndRows();
 
 
 //Prompt user to change gridSize using button
-const sizeChange = document.querySelector('#sizeBtn');
+const sizeChange = document.getElementById('sizeBtn');
 sizeChange.addEventListener('click', getUserInput);
 
 function getUserInput(){
@@ -111,7 +135,6 @@ function getUserInput(){
             gridSize = userInput;
             addSquares(gridSize);
             resizeColumnsAndRows(gridSize);
-            changeBlackColor();
         }
         else {
             alert("Please enter a value up to 100.")
@@ -121,37 +144,3 @@ function getUserInput(){
         alert("No input was provided.");
     }
 }
-
-/*
-
-1. Random color generator
-
-make 2 buttons, black button and rainbow button;
-
-
-for change color on hover function
-if black button clicked then
-    mouse hover will turn squares to black
-
-else if rainbow button clicked then
-    mouse hover will turn squares to rainbow
-    so call back the random function
-
-when button black or random is clicked,
-grid.innerHTML = '';
-if black button then
-    return black
-
-if random button then
-    return random
-
-2. shade or darkening effect, each time click or passed 10% darker,
-after 10 iterations, pitch black.
-
-If mouseover column then
-    if column is white then
-    return;
-    else
-    the touched column will shade 10%
-
-*/

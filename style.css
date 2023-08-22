@@ -45,13 +45,5 @@ body {
     border: 1px solid grey;
     background-color: white;
     cursor: pointer;
-}
-
-/* Color Change */
-.column:hover {
-    background-color: black;
-}
-
-.darkened {
-    opacity: 0.5;
+    transition: background-color 0.07s ease;
 }
