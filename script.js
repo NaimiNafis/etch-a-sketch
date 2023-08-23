@@ -77,16 +77,45 @@ function changeBlackColor() {
     });
 }
 
+//Eraser function
+
+const gridEraser = document.getElementById('eraserBtn');
+gridEraser.addEventListener('click', eraser);
+
+function eraser() {
+    const squares = document.querySelectorAll('.column');
+    squares.forEach((square) => {
+        square.addEventListener('mousedown', () => {
+            isDragging = true;
+            square.style.backgroundColor = 'white';
+        })
+        square.addEventListener('mouseenter', () => {
+            if (isDragging === true){
+                square.style.backgroundColor = 'white';
+            }
+        })
+        square.addEventListener('mouseup', () => {
+            isDragging = false;
+        })
+    });
+}
+
 //Shade effect on colored column
 const darkShade = document.getElementById('darkShadeBtn');
 darkShade.addEventListener('click', darkenColumn);
 
+let currentDarkness = 1;
+
 function darkenColumn() {
+    currentDarkness -= 0.1;
+    if (currentDarkness < 0) {
+        currentDarkness = 0;
+    }
     const squares = document.querySelectorAll('.column');
     squares.forEach((square) => {
         const currentColor = window.getComputedStyle(square).backgroundColor;
         const rgb = currentColor.match(/\d+/g);
-        const newColor = `rgb(${rgb[0]*0.9}, ${rgb[1]*0.9}, ${rgb[2]*0.9})`
+        const newColor = `rgb(${rgb[0] * currentDarkness}, ${rgb[1] * currentDarkness}, ${rgb[2] * currentDarkness})`;
         square.addEventListener('mousedown', () => {
             isDragging = true;
             square.style.backgroundColor = newColor;
