@@ -4,10 +4,11 @@ let gridSize = 16;
 // Selectors for buttons
 const gridClear = document.getElementById('clearBtn');
 const randomColorButton = document.getElementById('randomBtn');
-const blackColorButton = document.getElementById('blackBtn');
+const colorModeButton = document.getElementById('colorModeBtn');
 const gridEraser = document.getElementById('eraserBtn');
 const darkShade = document.getElementById('darkShadeBtn');
 const sizeChange = document.getElementById('sizeBtn');
+const colorPicker = document.getElementById('colorPicker');
 
 // Utility functions
 function createSquare(className = '') {
@@ -56,8 +57,9 @@ randomColorButton.addEventListener('click', () => {
     });
 });
 
-blackColorButton.addEventListener('click', () => {
-    changeColor('black');
+colorModeButton.addEventListener('click', () => {
+    let selectedColor = colorPicker.value;
+    changeColor(selectedColor);
 });
 
 gridEraser.addEventListener('click', () => {
