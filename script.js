@@ -35,7 +35,25 @@ gridClear.addEventListener('click', () => {
 });
 
 randomColorButton.addEventListener('click', () => {
-    changeColor(getRandomColor());
+    //1. After refactor (did not work)
+    //changeColor(getRandomColor());
+    //2. Original Code
+    removeEventListeners(); 
+    const squares = document.querySelectorAll('.column');
+    squares.forEach(square => {
+        square.addEventListener('mousedown', () => {
+            isDragging = true;
+            applyColor(square, getRandomColor());
+        });
+        square.addEventListener('mouseenter', () => {
+            if (isDragging === true) {
+                applyColor(square, getRandomColor());
+            }
+        });
+        square.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+    });
 });
 
 blackColorButton.addEventListener('click', () => {
@@ -96,7 +114,7 @@ function applyDarkShade() {
 }
 
 function applyDarkness(square, currentDarkness) {
-    const newDarkness = Math.max(currentDarkness - 0.1, 0);
+    const newDarkness = Math.max(currentDarkness - 0.2, 0);
     const currentColor = window.getComputedStyle(square).backgroundColor;
     const currentRGB = currentColor.match(/\d+/g);
     const newColor = `rgb(${Math.floor(currentRGB[0] * newDarkness)}, ${Math.floor(currentRGB[1] * newDarkness)}, ${Math.floor(currentRGB[2] * newDarkness)})`;
