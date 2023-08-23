@@ -78,27 +78,28 @@ function changeBlackColor() {
 }
 
 //Shade effect on colored column
-/*
-Problem: 
-1.mouseover getRandomColor did not stop when shade button clicked
-
-capture current color value
-create new color value + darken it 10%
-
-If mouseover column then
-    if column is white then
-    return;
-    else
-    the touched column will shade 10%
-
-
- */
-
 const darkShade = document.getElementById('darkShadeBtn');
 darkShade.addEventListener('click', darkenColumn);
 
 function darkenColumn() {
-
+    const squares = document.querySelectorAll('.column');
+    squares.forEach((square) => {
+        const currentColor = window.getComputedStyle(square).backgroundColor;
+        const rgb = currentColor.match(/\d+/g);
+        const newColor = `rgb(${rgb[0]*0.9}, ${rgb[1]*0.9}, ${rgb[2]*0.9})`
+        square.addEventListener('mousedown', () => {
+            isDragging = true;
+            square.style.backgroundColor = newColor;
+        })
+        square.addEventListener('mouseenter', () => {
+            if (isDragging === true){
+                square.style.backgroundColor = newColor;
+            }
+        })
+        square.addEventListener('mouseup', () => {
+            isDragging = false;
+        })
+    });
 }
 
 
