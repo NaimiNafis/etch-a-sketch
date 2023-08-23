@@ -1,15 +1,19 @@
-/* Main Part */
+/* Header */
+
+#header {
+    color: #491c00;
+    font-size: 100px;
+    font-weight: bolder;
+}
+
+/* Main */
 body {
     font-family: Roboto, sans-serif;
+    font-size: larger;
     text-align: center;
     margin: 0;
     padding: 0;
     background-color: #f6eee9;
-}
-
-h1 {
-    color: #491c00;
-    font-size: xxx-large;
 }
 
 #container {
@@ -25,51 +29,57 @@ h1 {
 }
 
 #grid {
-    margin: 5%;
+    margin: 50px;
     display: flex;
     flex-direction: column;
     width: 960px;
     height: auto;
-}
-
-#footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #eadbdd;
-    height: 50px;
-    flex-shrink: 0;
+    border: 5px;
+    border-color: black;
 }
 
 /* Button design */
 
-.style {
-    appearance: none;
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
+input[type='color'] {
+    width: 70px;
+    height: 70px;
     border: none;
     transition: transform 0.2s ease-in-out;
 }
 
+input[type='color']::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+input[type='color']::-webkit-color-swatch {
+    border: none;
+    border-radius: 50px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+input:hover {
+    transform: scale(1.05);
+}
 
 button {
     margin: 5px;
-    padding: 5px;
+    padding: 1px 15px;
     font-weight: bold;
+    font-size: 20px;
     color: #491c00;
     background-color: white;
-    border: 2opx 20px;
     border-color: #491c00;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease-in-out;
 }
 
-.style:hover, button:hover{
+.clicked, button:hover{
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-    transform: scale(1.1);
+    color: white;
+    background-color: #491c00;
+    transform: scale(1.05);
 }
 
 /* Inside grid */
@@ -78,8 +88,29 @@ button {
 }
 
 .column {
-    border: none;
     background-color: white;
     cursor: pointer;
 }
 
+
+/* Footer */
+
+#footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #eadbdd;
+    height: 60px;
+    flex-shrink: 0;
+}
+
+img {
+    width: 40px;
+    height: 40px;
+    margin: 0px 10px;
+    transition: transform 0.2s ease-in-out;
+}
+
+img:hover{
+    transform: scale(1.05);
+}

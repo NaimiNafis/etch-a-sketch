@@ -9,6 +9,8 @@ const gridEraser = document.getElementById('eraserBtn');
 const darkShade = document.getElementById('darkShadeBtn');
 const sizeChange = document.getElementById('sizeBtn');
 const colorPicker = document.getElementById('colorPicker');
+const buttons = document.querySelectorAll('button');
+
 
 // Utility functions
 function createSquare(className = '') {
@@ -55,6 +57,11 @@ randomColorButton.addEventListener('click', () => {
             isDragging = false;
         });
     });
+});
+
+colorPicker.addEventListener('input', () => {
+    let selectedColor = colorPicker.value;
+    changeColor(selectedColor);
 });
 
 colorModeButton.addEventListener('click', () => {
@@ -176,6 +183,18 @@ function getUserInput() {
         alert("No input was provided.");
     }
 }
+
+// Function to handle button clicks
+function handleButtonClick(event) {
+    buttons.forEach(button => {
+        button.classList.remove('clicked');
+    });
+    event.currentTarget.classList.add('clicked');
+}
+
+buttons.forEach(button => {
+    button.addEventListener('click', handleButtonClick);
+});
 
 // Initialize the grid
 const grid = document.getElementById('grid');
