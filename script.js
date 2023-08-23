@@ -26,7 +26,7 @@ function clearGrid(){
     }); 
 }
 
-//Change color when hover
+//Change color when dragged
 const randomColorButton = document.getElementById('randomBtn');
 const blackColorButton = document.getElementById('blackBtn');
 
@@ -77,8 +77,7 @@ function changeBlackColor() {
     });
 }
 
-//Eraser function
-
+//Erase to white
 const gridEraser = document.getElementById('eraserBtn');
 gridEraser.addEventListener('click', eraser);
 
@@ -101,35 +100,50 @@ function eraser() {
 }
 
 //Shade effect on colored column
+
 const darkShade = document.getElementById('darkShadeBtn');
 darkShade.addEventListener('click', darkenColumn);
-
 let currentDarkness = 1;
 
 function darkenColumn() {
-    currentDarkness -= 0.1;
-    if (currentDarkness < 0) {
-        currentDarkness = 0;
-    }
     const squares = document.querySelectorAll('.column');
+    let currentDarkness = 1;
     squares.forEach((square) => {
-        const currentColor = window.getComputedStyle(square).backgroundColor;
-        const rgb = currentColor.match(/\d+/g);
-        const newColor = `rgb(${rgb[0] * currentDarkness}, ${rgb[1] * currentDarkness}, ${rgb[2] * currentDarkness})`;
-        square.addEventListener('mousedown', () => {
-            isDragging = true;
-            square.style.backgroundColor = newColor;
-        })
         square.addEventListener('mouseenter', () => {
-            if (isDragging === true){
-                square.style.backgroundColor = newColor;
-            }
-        })
-        square.addEventListener('mouseup', () => {
-            isDragging = false;
-        })
+            const newDarkness = Math.max(currentDarkness - 0.1, 0);
+            const currentColor = window.getComputedStyle(square).backgroundColor;
+            const rgb = currentColor.match(/\d+/g);
+            const newColor = `rgb(${Math.floor(rgb[0] * newDarkness)}, ${Math.floor(rgb[1] * newDarkness)}, ${Math.floor(rgb[2] * newDarkness)})`;
+            square.style.backgroundColor = newColor;
+        });
     });
 }
+
+// function darkenColumn() {
+//     currentDarkness -= 0.1;
+//     if (currentDarkness < 0) {
+//         currentDarkness = 0;
+//     }
+//     const squares = document.querySelectorAll('.column');
+//     squares.forEach((square) => {
+//         const currentColor = window.getComputedStyle(square).backgroundColor;
+//         const rgb = currentColor.match(/\d+/g);
+//         const newColor = `rgb(${rgb[0] * currentDarkness}, ${rgb[1] * currentDarkness}, ${rgb[2] * currentDarkness})`;
+//         //the newColor rgb value should be (0,0,0) or black at the end of 10 iteration
+//         square.addEventListener('mousedown', () => {
+//             isDragging = true;
+//             square.style.backgroundColor = newColor;
+//         })
+//         square.addEventListener('mouseenter', () => {
+//             if (isDragging === true){
+//                 square.style.backgroundColor = newColor;
+//             }
+//         })
+//         square.addEventListener('mouseup', () => {
+//             isDragging = false;
+//         })
+//     });
+// }
 
 
 //Resize column and row when gridSize change
@@ -174,3 +188,5 @@ function getUserInput(){
         alert("No input was provided.");
     }
 }
+
+
