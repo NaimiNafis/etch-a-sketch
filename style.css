@@ -61,7 +61,6 @@ input[type='color']::-webkit-color-swatch {
     border: none;
     border-radius: 50px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    background-color: #f6eee9;
 }
 
 input:hover {
