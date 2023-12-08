@@ -16,7 +16,7 @@ This Etch-a-Sketch project is an interactive web application allowing users to c
 
 ## Installation / Access
 - Simply clone the repo and open index.html in a web browser.
-- Or you can click the link on the About Section.
+- Or you can click the link in the About Section.
 
 ## Contributing
 Contributions are welcome. Please open an issue or submit a pull request.
