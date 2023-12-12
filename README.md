@@ -1,7 +1,7 @@
 # TOP Etch-a-Sketch
 
 <p align="center">
-  <img src="./img/etch-a-sketch.png" alt="TOP Calculator" width="300"/>
+  <img src="./img/etch-a-sketch.png" alt="TOP Calculator"/>
 </p>
 
 ## Overview
