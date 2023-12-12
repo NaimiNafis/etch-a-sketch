@@ -1,6 +1,11 @@
-# Etch-a-Sketch Project
+# TOP Etch-a-Sketch
+
+<p align="center">
+  <img src="./img/etch-a-sketch.png" alt="TOP Calculator" width="300"/>
+</p>
 
 ## Overview
+Welcome to the TOP (The Odin Project) Etch-a-Sketch!
 This Etch-a-Sketch project is an interactive web application allowing users to create pixel art. Built with HTML, CSS, and JavaScript, it features a customizable grid where users can draw, apply colors, and use various modes.
 
 ## Features
@@ -10,19 +15,16 @@ This Etch-a-Sketch project is an interactive web application allowing users to c
 - Interactive Buttons: For grid resizing, mode selection, and clearing the canvas.
 
 ## Usage
+Access the Etch-a-sketch through [this link](https://naiminafis.github.io/etch-a-sketch/) . On the screen, you'll see the 16x16 canvas to unleash your creativity by: 
 - Drawing: Click and drag on the grid to draw.
 - Changing Modes: Select your desired mode using the buttons.
 - Resizing Grid: Adjust the grid size as needed.
 
-## Installation / Access
-- Simply clone the repo and open index.html in a web browser.
-- Or you can click the link on the About Section.
-
 ## Contributing
-Contributions are welcome. Please open an issue or submit a pull request.
+Contributors are always welcome to make contributions to this project and help improve it. If you'd like to contribute or work on available issues, feel free to do so. Let's collaborate and make this calculator even better!
 
-## License
-This project is open source and available under the MIT License.
+## Happy Drawing!
+I hope you find this TOP's 4th project useful and enjoy using it for your drawings. If you have any questions or suggestions, please don't hesitate to reach out to [Naimi Nafis](https://github.com/NaimiNafis).
 
 ## *Copyright Reserved:*
 
